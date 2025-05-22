@@ -1,8 +1,11 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -44,6 +47,32 @@ public class HerokuHomeTest {
             expectedHeading,
             actualHeading
         );
+    }
+
+    @Test
+    public void testClickABTestingLink() {
+      
+        driver.get("http://the-internet.herokuapp.com/");
+
+
+        By linksLocator = By.cssSelector("ul li a");
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(linksLocator));
+
+
+        WebElement abLink = driver.findElement(By.linkText("A/B Testing"));
+        abLink.click();
+
+
+        By headingLocator = By.tagName("h3");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(headingLocator));
+
+
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(
+            "URL should end with /abtest",
+            currentUrl.endsWith("/abtest")
+        );
+
     }
 
     @After
