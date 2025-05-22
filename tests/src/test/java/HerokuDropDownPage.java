@@ -20,7 +20,6 @@ public class HerokuDropDownPage extends PageBase {
         wait.until(ExpectedConditions.visibilityOfElementLocated(dropdownBy));
     }
 
-    /** Returns the visible text of all <option> elements in order. */
     public List<String> getOptionTexts() {
         Select select = new Select(waitAndReturnElement(dropdownBy));
         return select.getOptions()
@@ -29,7 +28,6 @@ public class HerokuDropDownPage extends PageBase {
                      .collect(Collectors.toList());
     }
 
-    /** Returns the `value` attribute of all <option> elements in order. */
     public List<String> getOptionValues() {
         Select select = new Select(waitAndReturnElement(dropdownBy));
         return select.getOptions()
@@ -38,12 +36,11 @@ public class HerokuDropDownPage extends PageBase {
                      .collect(Collectors.toList());
     }
 
-    /** Selects the option by its visible text. */
     public void selectByVisibleText(String text) {
         Select select = new Select(waitAndReturnElement(dropdownBy));
         select.selectByVisibleText(text);
 
-        // Disambiguate `until` by declaring the lambda as an ExpectedCondition<Boolean>
+        
         ExpectedCondition<Boolean> optionSelected = driver ->
             select.getAllSelectedOptions()
                 .stream()
@@ -52,7 +49,7 @@ public class HerokuDropDownPage extends PageBase {
         wait.until(optionSelected);
     }
 
-    /** Returns the visible text of the currently selected option. */
+    
     public String getSelectedOptionText() {
         Select select = new Select(waitAndReturnElement(dropdownBy));
         return select.getFirstSelectedOption().getText();

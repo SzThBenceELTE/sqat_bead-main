@@ -30,17 +30,17 @@ public class HerokuHomeTest {
 
      @Test
     public void testHomePageHeading_WithExplicitWait() {
-        // 1. Navigate to the Internet demo site
+        // Navigate to the Internet demo site
         driver.get("http://the-internet.herokuapp.com/");
 
-        // 2. Use explicit wait to pause until the <h1> is visible
+        // Use explicit wait to pause until the <h1> is visible
         By headingLocator = By.tagName("h1");
         wait.until(ExpectedConditions.visibilityOfElementLocated(headingLocator));
 
-        // 3. Now that it's visible, retrieve its text
+        // Now that it's visible, retrieve its text
         String actualHeading = driver.findElement(headingLocator).getText();
 
-        // 4. Assert it matches the expected value
+        // Assert it matches the expected value
         String expectedHeading = "Welcome to the-internet";
         assertEquals(
             "The <h1> text should match after waiting for it to appear",

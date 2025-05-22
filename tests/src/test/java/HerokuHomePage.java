@@ -4,10 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
- * Models the main landing page of The Internet:
- * http://the-internet.herokuapp.com/
- */
+
 public class HerokuHomePage {
     private static final String URL = "http://the-internet.herokuapp.com/";
     private final WebDriver driver;

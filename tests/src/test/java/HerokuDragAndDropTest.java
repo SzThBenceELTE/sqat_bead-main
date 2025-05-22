@@ -28,11 +28,11 @@ public class HerokuDragAndDropTest {
     @Test
     public void testDragAndDropWithJS() {
         String before = page.getColumnAText();
-        assertEquals("Initial column A should be 'A'", "A", before);  // consistency check :contentReference[oaicite:9]{index=9}
+        assertEquals("Initial column A should be 'A'", "A", before);  
 
-        page.dragAndDropWithJS();  // use JS helper
+        page.dragAndDropWithJS();  
         String after = page.getColumnAText();
-        assertEquals("After JS simulation, column A should be 'B'", "B", after);  // reliable in HTML5 :contentReference[oaicite:10]{index=10}
+        assertEquals("After JS simulation, column A should be 'B'", "B", after);  
     }
 
     @After

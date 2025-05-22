@@ -35,12 +35,12 @@ public class HerokuLoginPage extends PageBase {
         waitAndReturnElement(loginButton).click();
     }
 
-    /** @return the flash message text shown after login attempt */
+
     public String getFlashText() {
         return waitAndReturnElement(flashMessage).getText();
     }
 
-    /** @return true if the Logout button is visible (i.e. login succeeded) */
+ 
     public boolean isLogoutVisible() {
         return wait.until(
             ExpectedConditions.visibilityOfElementLocated(logoutButton)

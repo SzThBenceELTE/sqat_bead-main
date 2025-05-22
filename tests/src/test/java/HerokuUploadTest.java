@@ -34,7 +34,7 @@ public class HerokuUploadTest {
 
      @Test
     public void testLoginAndFileUpload() throws URISyntaxException {
-        // 1. Login
+        // Login
         driver.get(baseUrl + "/login");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")))
             .sendKeys("tomsmith");
@@ -48,23 +48,23 @@ public class HerokuUploadTest {
          driver.get(baseUrl + "/upload");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h3")));
 
-        // 1. Locate the generated file on disk
+        // Locate the generated file on disk
         File uploadFile = new File(
             System.getProperty("user.dir") +
             "/build/generated/upload.txt"
         );
         assertTrue("Upload file must exist", uploadFile.isFile());
 
-        // 2. Enable file transfer to remote Grid
+        // Enable file transfer to remote Grid
         driver.setFileDetector(new LocalFileDetector());
 
-        // 3. Upload it
+        // Upload it
         RemoteWebElement input = 
             (RemoteWebElement) driver.findElement(By.id("file-upload"));
         input.sendKeys(uploadFile.getAbsolutePath());
         driver.findElement(By.id("file-submit")).click();
 
-        // 4. Verify success
+        // Verify success
         WebElement header = wait.until(
             ExpectedConditions.visibilityOfElementLocated(By.tagName("h3"))
         );

@@ -23,28 +23,28 @@ public class HerokuLoginTest {
         // 1. Navigate
         driver.get("http://the-internet.herokuapp.com/login");  
         // 2. Retrieve the <title>
-        String title = driver.getTitle();              // :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}
+        String title = driver.getTitle();              
         System.out.println("Page title is: " + title);
         // 3. Basic assertion
         assertTrue(
             "Title should mention 'The Internet'", 
             title.toLowerCase().contains("the internet")
-        );                                            // :contentReference[oaicite:2]{index=2}
+        );                                            
     }
 
     @Test
     public void testSuccessfulLogin() {
-        // 1. Perform login with valid credentials
-        loginPage.loginAs("tomsmith", "SuperSecretPassword!");  // :contentReference[oaicite:2]{index=2}
+        // Perform login with valid credentials
+        loginPage.loginAs("tomsmith", "SuperSecretPassword!");  
 
-        // 2. Verify the flash message contains success text
+        // Verify the flash message contains success text
         String flash = loginPage.getFlashText();
         assertTrue(
             "Flash message should indicate successful login",
-            flash.toLowerCase().contains("you logged into a secure area!")  // :contentReference[oaicite:3]{index=3}
+            flash.toLowerCase().contains("you logged into a secure area!")  
         );
 
-        // 3. Verify the Logout button is now visible
+        // Verify the Logout button is now visible
         assertTrue(
             "Logout button should be visible after login",
             loginPage.isLogoutVisible()
@@ -53,17 +53,17 @@ public class HerokuLoginTest {
 
     @Test
     public void testSuccessfulLogout() {
-        // 1. Perform login with valid credentials
-        loginPage.loginAs("tomsmith", "SuperSecretPassword!");  // :contentReference[oaicite:2]{index=2}
+        // Perform login with valid credentials
+        loginPage.loginAs("tomsmith", "SuperSecretPassword!");  
 
-        // 2. Verify the flash message contains success text
+        // Verify the flash message contains success text
         String flash = loginPage.getFlashText();
         assertTrue(
             "Flash message should indicate successful login",
-            flash.toLowerCase().contains("you logged into a secure area!")  // :contentReference[oaicite:3]{index=3}
+            flash.toLowerCase().contains("you logged into a secure area!")  
         );
 
-        // 3. Verify the Logout button is now visible
+        // Verify the Logout button is now visible
         assertTrue(
             "Logout button should be visible after login",
             loginPage.isLogoutVisible()
@@ -72,9 +72,9 @@ public class HerokuLoginTest {
 
     @Test
     public void testLogout() {
-        // 1. Perform login with valid credentials
-        loginPage.loginAs("tomsmith", "SuperSecretPassword!");  // :contentReference[oaicite:2]{index=2}
-        // 2. Click the Logout button
+        // Perform login with valid credentials
+        loginPage.loginAs("tomsmith", "SuperSecretPassword!");
+        // Click the Logout button
         loginPage.logout();
 
         assertTrue(

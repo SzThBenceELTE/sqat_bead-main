@@ -33,14 +33,14 @@ public class HerokuDropDownTest {
             "", "1", "2"
         );
 
-        // 1) Verify option texts
+        // Verify option texts
         List<String> actualTexts = dropdownPage.getOptionTexts();
         assertEquals(
             "Dropdown should contain exactly the three expected texts",
             expectedTexts, actualTexts
         );
 
-        // 2) Verify option values
+        // Verify option values
         List<String> actualValues = dropdownPage.getOptionValues();
         assertEquals(
             "Dropdown option values should match expected",
