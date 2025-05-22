@@ -14,6 +14,18 @@ dependencies {
     testImplementation "org.slf4j:slf4j-simple:1.7.9"
 }
 
+task generateUploadFile {
+    def out = file("$buildDir/generated/upload.txt")
+    outputs.file out
+    doLast {
+        out.parentFile.mkdirs()
+        out.text = "This is a Selenium-uploaded file.\nGenerated at " + new Date()
+    }
+}
+
 test {
+     dependsOn generateUploadFile
+    // include that folder on the test runtime classpath
+    testClassesDirs += files("$buildDir/generated")
     testLogging.showStandardStreams = true
 }

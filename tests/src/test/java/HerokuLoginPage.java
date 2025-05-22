@@ -11,7 +11,9 @@ public class HerokuLoginPage extends PageBase {
     private By passwordBy   = By.id("password");
     private By loginButton  = By.cssSelector("button.radius");
     private By flashMessage = By.id("flash");
-    private By logoutButton = By.cssSelector("a.button.secondary.radius");
+    private By logoutButton = By.xpath(
+    "//a[contains(@class,'button') and contains(@class,'secondary') and contains(@class,'radius')]"
+);
 
     public HerokuLoginPage(WebDriver driver) {
         super(driver);
